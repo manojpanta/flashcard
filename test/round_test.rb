@@ -29,39 +29,40 @@ class RoundTest < MiniTest::Test
   end
 
   def test_record_guessbhjbj
-    assert_equal @round.guesses, @round.record_guess("Juneau")
+    assert_instance_of Guess, @round.record_guess("Juneau")
   end
 
   def test_count_guesses
-    @round.record_guess("Juneau")
 
+    @round.record_guess("Juneau")
     assert_equal 1, @round.guesses.count
   end
 
   def test_first_feedback
-    skip
+    @round.record_guess("Juneau")
 
     assert_equal "Correct!", @round.guesses.first.feedback
   end
 
   def test_number_correct
-    skip
+    @round.record_guess("Juneau")
+    @round.record_guess("2")
     assert_equal 1, @round.number_correct
   end
+  # require "pry" ; binding.pry
 
   def test_current_card
-    # skip
+    @round.record_guess("Juneau")
     assert_equal @card22, @round.current_card
   end
 
   def test_record_guess
-    skip
+
     @round.record_guess("Juneau")
-    assert_equal @round.guesses, @round.record_guess("2")
+    assert_instance_of Guess, @round.record_guess("2")
   end
 
   def test_now_count_is_2
-    skip
     @round.record_guess("Juneau")
     @round.record_guess("2")
     assert_equal 2, @round.guesses.count
@@ -69,23 +70,20 @@ class RoundTest < MiniTest::Test
   end
 
   def test_last_feedback
-    skip
     @round.record_guess("Juneau")
     @round.record_guess("2")
-    assert_equal "Incorrect",@round.guesses.last.feedback
+    assert_equal "Incorrect.",@round.guesses.last.feedback
   end
 
   def test_no_of_correct_guesses
-    skip
     @round.record_guess("Juneau")
     @round.record_guess("2")
     assert_equal 1, @round.number_correct
   end
 
   def test_rate_ofcorrectness
-    skip
     @round.record_guess("Juneau")
     @round.record_guess("2")
-    assert_equal 50, round.percent_correct
+    assert_equal 50, @round.percent_correct
   end
 end
