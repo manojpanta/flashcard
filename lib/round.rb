@@ -2,13 +2,13 @@ require_relative 'guess'
 
 class Round
 
-attr_reader :deck, :guesses, :right_guesses, :number_correct
+attr_reader :deck, :guesses, :right_guesses
   def initialize(deck)
     @deck = deck
     @guesses = []
     @card_count = 0
     @right_guesses = []
-    @number_correct = 0
+
   end
 
   def current_card
@@ -21,15 +21,19 @@ attr_reader :deck, :guesses, :right_guesses, :number_correct
     @card_count += 1
     if result.correct?
       @right_guesses << result
-      @number_correct += 1
+
     end
 
 
     result
   end
 
+  def number_correct
+    @right_guesses.length
+  end
+
   def percent_correct
-    require 'pry' ; binding.pry
+    # require 'pry' ; binding.pry
     ((@right_guesses.count.to_f / @guesses.count.to_f) * 100).to_i
 
   end
