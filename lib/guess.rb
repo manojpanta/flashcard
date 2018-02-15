@@ -1,15 +1,17 @@
-require_relative 'card'
-
 class Guess
-  attr_reader :response, :card
+  attr_reader :response
 
-  def initialize(response, card)
+  def initialize(response, anything)
     @response = response
-    @card = card
+    @card = anything
   end
 
   def correct?
-    @response == @card.answer
+    @response == @card.answer.downcase
+  end
+
+  def card
+    @card
   end
 
   def feedback

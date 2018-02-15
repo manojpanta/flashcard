@@ -33,9 +33,35 @@ attr_reader :deck, :guesses, :right_guesses
   end
 
   def percent_correct
-    # require 'pry' ; binding.pry
     ((@right_guesses.count.to_f / @guesses.count.to_f) * 100).to_i
 
+  end
+  def start
+    header
+    play_game
+    footer
+
+  end
+
+  def header
+    puts "Welcome! You're playing with 4 cards."
+    puts "-------------------------------------------------"
+  end
+
+  def play_game
+    deck.cards.each do |question|
+      puts "This is card number #{guesses.length + 1} out of #{deck.count}."
+      puts "Question:#{deck.cards[guesses.length].question}"
+      answer = gets.chomp.downcase
+      record_guess(answer)
+      puts guesses.last.feedback
+      # require 'pry' ; binding.pry
+    end
+  end
+
+  def footer
+    puts "****** Game over! ******"
+    puts "You had #{right_guesses.length} correct guesses out of #{guesses.length} for a score of #{percent_correct}%."
   end
 
 end
