@@ -7,7 +7,6 @@ attr_reader :deck, :guesses, :right_guesses
     @deck = deck
     @guesses = []
     @card_count = 0
-    @right_guesses = []
   end
 
   def current_card
@@ -18,18 +17,19 @@ attr_reader :deck, :guesses, :right_guesses
     result = Guess.new(answer, current_card)
     @guesses << result
     @card_count += 1
-    if result.correct?
-      @right_guesses << result
-    end
     result
   end
 
-  def number_correct
-    @right_guesses.length
+  def right_guesses
+      @guesses.find_all do |guess|
+        if guess.correct?
+        guess
+        end
+      end.count
   end
 
   def percent_correct
-    ((@right_guesses.count.to_f / @guesses.count.to_f) * 100).to_i
+    ((right_guesses.to_f/ @guesses.count.to_f) * 100).to_i
   end
 
   def start
@@ -55,7 +55,7 @@ attr_reader :deck, :guesses, :right_guesses
 
   def footer
     puts '****** Game Over!!! ******'
-    puts "You had #{right_guesses.length} correct guesses out of "\
+    puts "You had #{right_guesses} correct guesses out of "\
     "#{guesses.length} for a score of #{percent_correct}%."
   end
 end
