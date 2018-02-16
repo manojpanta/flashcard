@@ -1,13 +1,12 @@
 require_relative 'card'
 
 class Deck
-  attr_reader :cards, :count
+  attr_reader :cards
   def initialize(array)
     @cards = array
-
   end
+
   def count
-    @cards.length #you can just move this line up there  at initialize (same thing)
+    @cards.length
   end
-
 end

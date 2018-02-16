@@ -8,7 +8,6 @@ attr_reader :deck, :guesses, :right_guesses
     @guesses = []
     @card_count = 0
     @right_guesses = []
-
   end
 
   def current_card
@@ -21,10 +20,7 @@ attr_reader :deck, :guesses, :right_guesses
     @card_count += 1
     if result.correct?
       @right_guesses << result
-
     end
-
-
     result
   end
 
@@ -34,18 +30,17 @@ attr_reader :deck, :guesses, :right_guesses
 
   def percent_correct
     ((@right_guesses.count.to_f / @guesses.count.to_f) * 100).to_i
-
   end
+
   def start
     header
     play_game
     footer
-
   end
 
   def header
-    puts "Welcome! You're playing with 4 cards."
-    puts "-------------------------------------------------"
+    puts "Welcome! You're playing with #{deck.count} cards."
+    puts '-------------------------------------------------'
   end
 
   def play_game
@@ -55,13 +50,12 @@ attr_reader :deck, :guesses, :right_guesses
       answer = gets.chomp.downcase
       record_guess(answer)
       puts guesses.last.feedback
-      # require 'pry' ; binding.pry
     end
   end
 
   def footer
-    puts "****** Game over! ******"
-    puts "You had #{right_guesses.length} correct guesses out of #{guesses.length} for a score of #{percent_correct}%."
+    puts '****** Game Over!!! ******'
+    puts "You had #{right_guesses.length} correct guesses out of "\
+    "#{guesses.length} for a score of #{percent_correct}%."
   end
-
 end
