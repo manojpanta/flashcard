@@ -43,7 +43,7 @@ class RoundTest < MiniTest::Test
   def test_number_correct
     @round.record_guess('Juneau')
     @round.record_guess('2')
-    assert_equal 1, @round.number_correct
+    assert_equal 1, @round.right_guesses
   end
 
   def test_current_card
@@ -71,7 +71,7 @@ class RoundTest < MiniTest::Test
   def test_no_of_correct_guesses
     @round.record_guess('Juneau')
     @round.record_guess('2')
-    assert_equal 1, @round.number_correct
+    assert_equal 1, @round.right_guesses
   end
 
   def test_rate_ofcorrectness

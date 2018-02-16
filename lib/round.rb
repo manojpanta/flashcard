@@ -29,7 +29,7 @@ attr_reader :deck, :guesses, :right_guesses
   end
 
   def percent_correct
-    ((right_guesses.to_f/ @guesses.count.to_f) * 100).to_i
+    ((right_guesses.to_f / @guesses.count.to_f) * 100).to_i
   end
 
   def start
