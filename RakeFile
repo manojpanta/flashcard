@@ -3,7 +3,7 @@ require 'rake'
 
 # SimpleCov.start 'Unit Tests'
 
-desc "run all tests"
+desc "run all the tests"
 task :test do
  my_files = FileList['./test/**/*.rb']
  my_files.each do |file|

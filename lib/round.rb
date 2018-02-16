@@ -21,11 +21,11 @@ attr_reader :deck, :guesses, :right_guesses
   end
 
   def right_guesses
-      @guesses.find_all do |guess|
-        if guess.correct?
-        guess
-        end
-      end.count
+    @guesses.find_all do |guess|
+      if guess.correct?
+      guess
+      end
+    end.count
   end
 
   def percent_correct
@@ -45,7 +45,8 @@ attr_reader :deck, :guesses, :right_guesses
 
   def play_game
     deck.cards.each do |question|
-      puts "This is card number #{guesses.length + 1} out of #{deck.count}."
+      puts "This is card number #{guesses.length + 1} out of '\
+      ' #{deck.count}."
       puts "Question:#{deck.cards[guesses.length].question}"
       answer = gets.chomp.downcase
       record_guess(answer)

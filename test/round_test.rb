@@ -8,8 +8,8 @@ class RoundTest < MiniTest::Test
 
   def setup
     @card11 = Card.new('What is the capital of Alaska?', 'Juneau')
-    @card22 = Card.new('Approximately how many miles are in one astronomical '\
-                      'unit?', '93,000,000')
+    @card22 = Card.new('Approximately how many miles are in one '\
+      'astronomical unit?', '93,000,000')
     @deck1 = Deck.new([@card11, @card22])
     @round = Round.new(@deck1)
   end
@@ -22,7 +22,7 @@ class RoundTest < MiniTest::Test
     assert_equal [], @round.guesses
   end
 
-  def test_current_card_manjnn
+  def test_current_card
     assert_equal @card11, @round.current_card
   end
 
